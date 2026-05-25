@@ -1,0 +1,15 @@
+CategoryID;Category;Transaction Type
+1;Paycheck;Income
+2;Restaurant Card;Income
+3;Rent;Expense
+4;Taxi;Expense
+5;Pet;Expense
+6;Cosmetics;Expense
+7;Health;Expense
+8;Partying;Expense
+9;Food;Expense
+10;Car/Driving Lincence;Expense
+11;Clothes;Expense
+12;Other;Income
+13;Social Media;Income
+14;Investments;Income
