@@ -37,6 +37,13 @@ The project evolved into a complete analytics engineering-style pipeline.
 ## ⚙️ Architecture
 
 Excel Files → Python (Pandas) → CSV (Star Schema) → Power BI Dashboard 
+
+---
+
+## 📌 Live Workflow
+
+Update Excel → Run Python ETL → Refresh Power BI → Dashboard updates instantly
+
 ---
 
 ## 📥 Data Source
