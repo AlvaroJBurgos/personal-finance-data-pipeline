@@ -13,10 +13,10 @@ def load_raw_data():
 
     # Loop through all Excel files in the folder
     for filename in os.listdir(folder_path):
-        if filename.startswith('Financials') and filename.endswith('.xlsx'):
+        if filename.startswith('Gastos') and filename.endswith('.xlsx'):
 
             # Extract year from filename
-            year = int(re.search(r'Financials(\d{4})', filename).group(1))
+            year = int(re.search(r'Gastos(\d{4})', filename).group(1))
 
             # Full file path
             file_path = os.path.join(folder_path, filename)
@@ -37,6 +37,6 @@ def load_raw_data():
 
 
     number_of_files = len(raw_data['Year'].unique())
-    print(f'Extraction completed for {number_of_files} file(s)')
+    # print(f'Extraction completed for {number_of_files} file(s)')
 
     return raw_data
