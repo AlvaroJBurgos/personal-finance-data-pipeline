@@ -37,6 +37,9 @@ def main():
     except Exception as e:
         logging.error(f'Modeling/Export failed: {e}')
         raise
+    
+    logging.info("ETL pipeline completed successfully")
+    print('Finished ETL pipeline Succesfully')
 
 if __name__ == '__main__':
     main()
