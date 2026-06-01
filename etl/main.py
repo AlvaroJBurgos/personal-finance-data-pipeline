@@ -1,44 +1,40 @@
 from ingestion import load_raw_data
 from transformation import transform_data
 from modeling import create_star_schema
+from config.logging_config import setup_logging
 import logging
-
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s"
-)
-
 
 def main():
     
-    logging.info('Starting ETL pipeline')
-
+    setup_logging()
+    logger = logging.getLogger(__name__)
+    
     # Extract
     try:
         raw_data = load_raw_data()
-        logging.info('Loading raw files')
+        logger.info('Loading raw files')
     except Exception as e:
-        logging.error(f'Extaction failed: {e}')
+        logger.exception("Load failed")
         raise
     
     
     # Transform
     try:
         transformed_data = transform_data(raw_data)
-        logging.info('Transformation completed')
+        logger.info('Transformation completed')
     except Exception as e:
-        logging.error(f'Transformation failed: {e}')
+        logger.exception("Transformation failed")
         raise
     
     # Model + Export
     try:
         fact_transactions, dim_category, dim_date = create_star_schema(transformed_data)
-        logging.info("Successfuly created the star schema")
+        logger.info("Successfuly created the star schema")
     except Exception as e:
-        logging.error(f'Modeling/Export failed: {e}')
+        logger.exception("Model/Export failed")
         raise
     
-    logging.info("ETL pipeline completed successfully")
+    logger.info("ETL pipeline completed successfully")
     print('Finished ETL pipeline Succesfully')
 
 if __name__ == '__main__':
