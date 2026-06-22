@@ -2,7 +2,7 @@ import os
 import re
 import pandas as pd
 
-def load_raw_data():
+def load_raw_data() -> pd.DataFrame:
 
 
     # Get project root directory

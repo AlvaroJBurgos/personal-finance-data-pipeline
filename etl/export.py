@@ -1,6 +1,10 @@
 import os
+import pandas as pd
 
-def export_to_csv(fact_transactions, dim_category, dim_date):
+def export_to_csv(fact_transactions: pd.DataFrame,
+                  dim_category: pd.DataFrame,
+                  dim_date: pd.DataFrame) -> None:
+    
      # Export tables to .csv
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) # Technical debt, will fix later
     processed_path  = os.path.join(base_dir, 'data', 'processed')
