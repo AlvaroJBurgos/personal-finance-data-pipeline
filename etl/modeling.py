@@ -1,4 +1,10 @@
+from typing import NamedTuple
+import pandas as pd
 
+class StarSchema(NamedTuple):
+    fact_transactions: pd.DataFrame
+    dim_category: pd.DataFrame
+    dim_date: pd.DataFrame
 
 MONTH_MAPPING = {
     'January': 1,
@@ -15,14 +21,14 @@ MONTH_MAPPING = {
     'December': 12,
 }
 
-def create_star_schema(df):
+def create_star_schema(df: pd.DataFrame) -> StarSchema:
     
     df = df.copy()
     
     # Creating dim_category based on df with only Category and Transaction Type, droping duplicates, and resetting Index
     dim_category = df[['Category', 'Transaction Type']].drop_duplicates().reset_index(drop=True)
 
-    #Creating the auto-augmented ID for the dimCategory
+    # Creating the auto-augmented ID for the dimCategory
     dim_category.insert(0, 'CategoryID', range(1, 1 + len(dim_category)))
 
     # Merging dim_category and df to add the CategoryID to what will be the fact table
@@ -65,4 +71,4 @@ def create_star_schema(df):
     #Reorder base on preference and create fact_transactions
     fact_transactions = df[['CategoryID', 'DateID', 'Amount']]
     
-    return fact_transactions, dim_category, dim_date
+    return StarSchema(fact_transactions, dim_category, dim_date)

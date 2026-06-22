@@ -1,6 +1,6 @@
 import pandas as pd
 
-def transform_data(raw_data):
+def transform_data(raw_data: pd.DataFrame) -> pd.DataFrame:
 
     # Create a copy to avoid modifying the original dataframe
     df = raw_data.copy()
@@ -34,7 +34,8 @@ def transform_data(raw_data):
         'Expenses',
         'Total Income',
         'Total Expenses',
-        'Montly Savings'
+        'Montly Savings',
+        'Total'
     ]
 
     # Remove unwanted rows
