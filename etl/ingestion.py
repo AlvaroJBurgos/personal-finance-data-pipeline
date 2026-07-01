@@ -16,7 +16,10 @@ def load_raw_data() -> pd.DataFrame:
         if filename.startswith('Financials') and filename.endswith('.xlsx'):
 
             # Extract year from filename
-            year = int(re.search(r'Financials(\d{4})', filename).group(1))
+            match = re.search(r'Financials(\d{4})', filename)
+            if not match:
+                raise ValueError(f"Could not extract year from filename: {filename}")
+            year = int(match.group(1))
 
             # Full file path
             file_path = os.path.join(folder_path, filename)
