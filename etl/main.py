@@ -43,10 +43,7 @@ def main():
         logger.exception("Failed to export CSV files")
         raise
     
-    
-    
     logger.info("ETL pipeline completed successfully")
-    print('Finished ETL pipeline Succesfully')
 
 if __name__ == '__main__':
     main()
