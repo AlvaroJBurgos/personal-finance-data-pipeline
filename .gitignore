@@ -24,3 +24,6 @@ Plan.md
 
 # Log files
 etl.log
+
+# Virtual environment
+.venv
