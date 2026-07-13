@@ -1,4 +1,4 @@
-from fastapi import FastAPI, APIRouter
+from fastapi import APIRouter
 from api.services.data_service import get_categories
 
 router = APIRouter()
