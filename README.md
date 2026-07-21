@@ -1,3 +1,6 @@
+*** Disclaimer ***
+**** This project is currently undergoing some major changes, so main branch and the readme won't work exactly as described below ****
+
 # 📊 Personal Finance Data Pipeline & Dashboard
 
 ![Dashboard Preview](assets/dashboard.png)
