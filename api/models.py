@@ -22,4 +22,11 @@ class Category(BaseModel):
     Category: str
     Transaction_Type: str = Field(alias="Transaction Type")
 
+class MonthlySavings(BaseModel):
+    Year: int
+    Month: str
+    Income: float
+    Expense: float
+    Savings: float
+
     
