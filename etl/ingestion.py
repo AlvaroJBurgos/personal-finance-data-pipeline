@@ -42,4 +42,9 @@ def load_raw_data() -> pd.DataFrame:
     number_of_files = len(raw_data['Year'].unique())
     print(f'Extraction completed for {number_of_files} file(s)')
 
+
     return raw_data
+
+print("Hello")
+df = load_raw_data()
+print(df)
