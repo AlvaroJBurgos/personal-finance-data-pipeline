@@ -44,7 +44,3 @@ def load_raw_data() -> pd.DataFrame:
 
 
     return raw_data
-
-print("Hello")
-df = load_raw_data()
-print(df)
