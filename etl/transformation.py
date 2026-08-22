@@ -1,7 +1,10 @@
 import pandas as pd
+import os
+import re
+
 
 def transform_data(raw_data: pd.DataFrame) -> pd.DataFrame:
-
+    
     # Create a copy to avoid modifying the original dataframe
     df = raw_data.copy()
 
@@ -12,8 +15,12 @@ def transform_data(raw_data: pd.DataFrame) -> pd.DataFrame:
         'Unnamed: 3': 'Week 2',
         'Unnamed: 4': 'Week 3',
         'Unnamed: 5': 'Week 4',
-        'Unnamed: 6': 'Week 5'
+        'Unnamed: 6': 'Week 5',
+        'Unnamed: 7': 'Total'
     })
+    
+    # Remove the totals column from the excel
+    df = df.drop(['Total'], axis='columns')
 
     # Drop completely empty columns
     df = df.dropna(axis=1, how='all')
@@ -43,6 +50,10 @@ def transform_data(raw_data: pd.DataFrame) -> pd.DataFrame:
         ~df['Category'].isin(invalid_categories)
         & df['Category'].notna()
     ]
+    
+    # Check colums that exist for the melt
+    week_cols = [col for col in ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5']
+                 if col in df.columns]
 
     # Unpivot weeks into rows
     df = df.melt(
@@ -52,13 +63,7 @@ def transform_data(raw_data: pd.DataFrame) -> pd.DataFrame:
             'Month',
             'Year'
         ],
-        value_vars=[
-            'Week 1',
-            'Week 2',
-            'Week 3',
-            'Week 4',
-            'Week 5'
-        ],
+        value_vars=week_cols,
         var_name='Week',
         value_name='Amount'
     )
