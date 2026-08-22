@@ -1,7 +1,5 @@
 import pandas as pd
 
-from etl.transformation import transform_data
-
 
 def test_transformation_invalid_categories(transformed_dataframe):
     invalid_categories = [
