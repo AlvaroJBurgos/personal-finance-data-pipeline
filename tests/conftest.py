@@ -1,6 +1,7 @@
 import pytest
 import pandas as pd
 from etl.transformation import transform_data
+from etl.modeling import create_star_schema
 
 @pytest.fixture
 def raw_dataframe():
@@ -20,3 +21,9 @@ def raw_dataframe():
 @pytest.fixture
 def transformed_dataframe(raw_dataframe):
     return transform_data(raw_dataframe)
+
+@pytest.fixture
+def modeled_dataframe(transformed_dataframe):
+    return create_star_schema(transformed_dataframe)
+
+    
